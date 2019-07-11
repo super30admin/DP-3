@@ -20,40 +20,27 @@ Input: [7,6,4,3,1]
 Output: 0
 Explanation: In this case, no transaction is done, i.e. max profit = 0.
 
-## Problem2 (https://leetcode.com/problems/climbing-stairs/)
-You are climbing a stair case. It takes n steps to reach to the top.
+## Problem2 (https://leetcode.com/problems/minimum-falling-path-sum/)
+Given a square array of integers A, we want the minimum sum of a falling path through A.
 
-Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?
+A falling path starts at any element in the first row, and chooses one element from each row.  The next row's choice must be in a column that is different from the previous row's column by at most one.
 
-Note: Given n will be a positive integer.
+ 
 
 Example 1:
 
-Input: 2
+Input: [[1,2,3],[4,5,6],[7,8,9]]
+Output: 12
+Explanation: 
+The possible falling paths are:
+[1,4,7], [1,4,8], [1,5,7], [1,5,8], [1,5,9]
+[2,4,7], [2,4,8], [2,5,7], [2,5,8], [2,5,9], [2,6,8], [2,6,9]
+[3,5,7], [3,5,8], [3,5,9], [3,6,8], [3,6,9]
+The falling path with the smallest sum is [1,4,7], so the answer is 12.
 
-Output: 2
+ 
 
-Explanation: There are two ways to climb to the top.
+Note:
 
-
-1. 1 step + 1 step
-
-
-2. 2 steps
-
-Example 2:
-
-Input: 3
-
-Output: 3
-
-Explanation: There are three ways to climb to the top.
-
-
-1. 1 step + 1 step + 1 step
-
-
-2. 1 step + 2 steps
-
-
-3. 2 steps + 1 step
+1 <= A.length == A[0].length <= 100
+-100 <= A[i][j] <= 100
