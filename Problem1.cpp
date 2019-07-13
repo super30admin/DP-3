@@ -19,16 +19,12 @@ public:
         for(int i =1; i<A.size(); i++){
             for(int j = 0; j<A[0].size(); j++){
                 minVal = INT_MAX;
-//                    if(i+1<A.size()){
-                        for(int x =j-1; x<j+2; x++){
-                            if(x<A[0].size() && x>=0 && dp[i-1][x]<minVal){
-//                                cout<<dp[i-1][x]<<" dp\n";
-                                minVal =  dp[i-1][x];
-                            }
-                        }
-//                        cout<<minVal<<" minVal\n";
-                        dp[i][j] = A[i][j]+minVal;
-//                    }
+                for(int x =j-1; x<j+2; x++){
+                    if(x<A[0].size() && x>=0 && dp[i-1][x]<minVal){
+                        minVal =  dp[i-1][x];
+                    }
+                }
+                dp[i][j] = A[i][j]+minVal;
             }
         }
         return *min_element(dp[A.size()-1],dp[A.size()-1]+A[0].size());
