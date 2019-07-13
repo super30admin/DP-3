@@ -1,15 +1,15 @@
-// Time Complexity : O(n) --> We iterate through the array once checking for minimum value while updating profit. 
+// Time Complexity : O(n^2) --> We iterate through the array for every row (except last) while checking for column on each iteration 
 // Space Complexity : O(1) 
 // Did this code successfully run on Leetcode : YES
-// Any problem you faced while coding this : None
+// Any problem you faced while coding this : Had some trouble understanding algorithm then finding out all the edge cases
 
 
 // Your code here along with comments explaining your approach
 
 /*
-1. Maximum Profit is the maximum value between the current maximum profit and difference between current selling price 
-   and minimum purchase price 
-2. Set maximum profit to 0 to handle edge cases when there is no profit.
+1. The basic approach here is to iterate through the array starting from second last row & first column to first row [bottom up approach].
+2. Update the array by checking for minimum on every iteration and adding it to the existing minimum Value from bottom to top.
+3. There are 3 overflow situations to be handled (when array size is 1, left column doesn't exist, right column doesn't exist).
 */
 
 
@@ -20,18 +20,30 @@ using namespace std;
 
 class Solution {
 public:
-    int maxProfit(vector<int>& prices) {
-        int minPrice = INT_MAX;
-        int profit = 0;
+    int minFallingPathSum(vector<vector<int>>& A) {
+        int size = A.size();
         
-        for(int i = 0; i<prices.size(); i++)
+        for(int row = size-2; row >= 0; row-- )
         {
-            if(prices[i] < minPrice)
-                minPrice = prices[i];
-            profit = max(profit, prices[i] - minPrice);
+            for(int column = 0; column < size; column++)
+            {
+                int currentMinimum = A[row + 1][column];
+                
+                if(column > 0) //prevents moving towards left and overflowing for first column 
+                    currentMinimum = min(currentMinimum, A[row + 1][column -1]);
+                
+                if(column + 1 < size) //check for the minimum value if right column exists
+                    currentMinimum = min(currentMinimum, A[row + 1][column+1]);
+                
+                A[row][column] += currentMinimum; //add the minimum before every iteration
+            }
         }
         
-        return profit;
-    }
+        int minimumValue = INT_MAX; 
         
-};;
+        for(int i: A[0])
+            minimumValue = min(minimumValue, i); 
+        return minimumValue;
+    }         
+    
+};
