@@ -14,10 +14,10 @@ class Solution {
         int l=A.length-1;
         int minValue = A[l][0]; 
         for(int i=1;i<A.length;i++){ 
-        if(A[l][i] < minValue){ 
-        minValue = A[l][i]; 
+         if(A[l][i] < minValue){ 
+          minValue = A[l][i]; 
       } 
     } 
     return minValue; 
-    }
+       }
 }
