@@ -1,6 +1,19 @@
 //
 // Created by shazmaan on 7/12/2019.
 //
+// Time Complexity : O(mn)
+// Space Complexity : O(mn)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : Confusing to figure the logic out but easy once you do.
+// Approach:
+// Using a array with the same dimensions as the original array, we find minimum from the current row -1
+// and add it to the element right below it. EG:
+//   ! !
+// [[1,2,3],  Case 1: find min from 1 and 2 -> add to 4. Case 2: find min from 1,2,3 and add to 5.
+//  [4,5,6],  Case 3: find min from 2,3 and add to 6. Store these values in DP array and further use these values for
+//  [7,8,9]]  the next row. The last row will then contain the minimum values from each column.
+//
+
 
 #include <iostream>
 #include <algorithm>
