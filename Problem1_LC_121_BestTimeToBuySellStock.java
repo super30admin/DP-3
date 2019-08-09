@@ -16,7 +16,7 @@ class Solution {
         //Initialize the buy var to maximum value
         int buy= Integer.MAX_VALUE;
         int sell=0, profit=0;
-        //Interate over the array, set the buy value to prices value
+        //Iterate over the array, set the buy value to prices value
         //if the existing buy value is greater.
         for(int i=0; i< prices.length; i++){
             if(buy> prices[i]){
@@ -27,7 +27,7 @@ class Solution {
             }else{ //Set the sell value if the existing sell value is lesser than prices array value
                 if(sell < prices[i]){
                     sell = prices[i];
-                    //Calulate or update the profit if existing value is less
+                    //Calculate or update the profit if existing value is less
                     if(profit < sell-buy) profit = sell-buy; 
                 }
             }  
