@@ -1,0 +1,26 @@
+// time complexity = O(m*2) m=no of rows
+// space comp = O(m)
+class Solution {
+    public int minFallingPathSum(int[][] a) {
+     
+        if(a.length==1)
+            return a[0][0];
+        int row = a.length;
+        int col=a[0].length;
+        for(int i=1;i<row;i++)
+        {
+            for(int j=0;j<col;j++)
+            {
+                if(j==0)
+                    a[i][j]+=Math.min(a[i-1][j],a[i-1][j+1]);
+                else if(j==col-1)
+                    a[i][j]+=Math.min(a[i-1][j],a[i-1][j-1]);
+                else
+                    a[i][j]+=Math.min(a[i-1][j-1],Math.min(a[i-1][j+1],a[i-1][j]));
+            }
+        }
+        int[] x=a[row-1];
+        Arrays.sort(x);
+        return x[0];
+    }
+}
