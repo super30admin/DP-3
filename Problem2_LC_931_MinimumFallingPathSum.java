@@ -52,7 +52,7 @@ public class Problem2_LC_931_MinimumFallingPathSum {
 	 public static void main(String[] args) {
 		 int[][] Input= {{1,2,3},{4,5,6},{7,8,9}};
 		 
-		 System.out.println("The possible falling parts are:  "+ minFallingPathSum(Input));
+		 System.out.println("The possible falling path is:  "+ minFallingPathSum(Input));
 	 }
 
 }
