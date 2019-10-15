@@ -1,24 +1,33 @@
 # DP-3
 
-## Problem1 (https://leetcode.com/problems/best-time-to-buy-and-sell-stock/)
-Say you have an array for which the ith element is the price of a given stock on day i.
+## Problem1: (https://leetcode.com/problems/delete-and-earn/)
 
-If you were only permitted to complete at most one transaction (i.e., buy one and sell one share of the stock), design an algorithm to find the maximum profit.
+Given an array nums of integers, you can perform operations on the array.
 
-Note that you cannot sell a stock before you buy one.
+In each operation, you pick any nums[i] and delete it to earn nums[i] points. After, you must delete every element equal to nums[i] - 1 or nums[i] + 1.
+
+You start with 0 points. Return the maximum number of points you can earn by applying such operations.
 
 Example 1:
 
-Input: [7,1,5,3,6,4]
-Output: 5
-Explanation: Buy on day 2 (price = 1) and sell on day 5 (price = 6), profit = 6-1 = 5.
+Input: nums = [3, 4, 2]
 
-             Not 7-1 = 6, as selling price needs to be larger than buying price.
+Output: 6
+
+    Explanation: Delete 4 to earn 4 points, consequently 3 is also deleted.
+    Then, delete 2 to earn 2 points. 6 total points are earned.
+
 Example 2:
 
-Input: [7,6,4,3,1]
-Output: 0
-Explanation: In this case, no transaction is done, i.e. max profit = 0.
+Input: nums = [2, 2, 3, 3, 3, 4]
+
+Output: 9
+
+    Explanation: Delete 3 to earn 3 points, deleting both 2's and the 4.
+    Then, delete 3 again to earn 3 points, and 3 again to earn 3 points.9 total points are earned.
+
+Note: The length of nums is at most 20000.
+      Each element nums[i] is an integer in the range [1, 10000].
 
 ## Problem2 (https://leetcode.com/problems/minimum-falling-path-sum/)
 Given a square array of integers A, we want the minimum sum of a falling path through A.
