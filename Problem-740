@@ -1,0 +1,85 @@
+/*
+Time Complexity -> n2^n --> brute force solution
+
+Leetcode -> time limit exceeded.
+
+Approach:
+
+recursion:
+maintain clone of nums as copy
+choose an element, delete that element from copy and also delete element +1 and -1.
+
+*/
+
+
+
+
+class Solution {
+    int max=Integer.MIN_VALUE;
+    public int deleteAndEarn(int[] nums) {
+        
+        if(nums==null || nums.length==0)
+            return 0;
+        
+        int sum=0;
+        int i=0;
+        int [] copy = nums.clone();
+        recur(nums,copy,i,sum);
+        recur(nums,copy,i+1,sum);
+        
+        return max;
+       
+    }
+    
+   void recur(int [] nums, int[] copy, int i, int sum)
+    {
+       int temp1=0;
+       int temp2=0;
+       int temp3=0;
+       int temp4=0;
+       int [] copytemp=copy.clone();
+       int sumtemp=sum;
+        if(i>=nums.length)
+            return;
+        int minusone=nums[i]-1;
+        int plusone=nums[i]+1;
+        //for()
+        for(int j=0;j<copy.length;j++)
+        {
+            if(copy[j]==minusone) 
+            {
+                copy[j]=0;
+                
+            }
+            if(copy[j]==plusone)
+            {
+                copy[j]=0;
+            }
+        }
+        sum+=copy[i];
+        copy[i]=0;
+        i++;
+        if(sum>max)
+        {
+            max=sum;
+        }
+        //case 1: to choose a number.
+         recur(nums,copy,i,sum);
+       
+       /*
+        if(i==0)
+        {
+        if(temp1==1) copy[temp3]=nums[temp3];
+       if(temp2==1) copy[temp4]=nums[temp4];
+        }
+       
+        sum-=nums[i];
+        */
+       
+        //case 2: not to choose a number.
+        
+        
+        recur(nums,copytemp,i,sumtemp);
+        
+    }
+}
