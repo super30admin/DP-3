@@ -45,11 +45,11 @@ class Solution:
 
     def minFallingPathSumBruteForce(self, A: List[List[int]]) -> int:
         """
-           // Time Complexity : O(n*3^m)
+           // Time Complexity : O(3^nm)
                         'n' is the number of columns
                         'm' is the number of rows
            // Space Complexity : O(m) if stack space is considered
-                                 else costant
+                                 else constant
            // Did this code successfully run on Leetcode :
                                  TLE
         """

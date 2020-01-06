@@ -65,7 +65,7 @@ class Solution:
 
     def deleteAndEarnBruteForce(self, nums: List[int]) -> int:
         """
-           // Time Complexity : Exponential
+           // Time Complexity : Exponential O(2^n)
            // Space Complexity : O(n) if we take stack space, else O(1)
            // Did this code successfully run on Leetcode : TLE
            // Any problem you faced while coding this :
