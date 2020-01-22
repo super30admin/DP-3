@@ -15,10 +15,11 @@ class Solution:
         for i in range(1,rows):
             pre = dp[:]
             for j in range(cols):
+                dp[j] = A[i][j]
                 if j == 0:
-                    dp[j] = A[i][j] + min(pre[j], pre[j+1])
+                    dp[j] += min(pre[j], pre[j+1])
                 elif j == cols-1:
-                    dp[j] = A[i][j] + min(pre[j-1], pre[j])
+                    dp[j] += min(pre[j-1], pre[j])
                 else:
-                    dp[j] = A[i][j] + min(min(pre[j-1],pre[j]), pre[j+1])
+                    dp[j] += min(min(pre[j-1],pre[j]), pre[j+1])
         return min(dp)
