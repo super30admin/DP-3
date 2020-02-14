@@ -5,6 +5,8 @@ class MinFallingPathSum(object):
     2. Update the given matrix by updating the current row's cell with sum of (minimum of previous row's
         3 columns (column - 1, column, column + 1).
     3. Return the minimum value obtained in the last row.
+
+    --- Successfully passed all Leetcode testcases.
     '''
     def minFallingPathSum(self, A):
         """
