@@ -1,0 +1,19 @@
+// Time Complexity : O(n ^2)
+// Space Complexity : O(n ^ 2)
+// Did this code successfully run on Leetcode : No
+// Any problem you faced while coding this : Couldn't derive the dp arr formula
+
+
+// Your code here along with comments explaining your approach
+
+class Solution:
+    def deleteAndEarn(self, nums: List[int]) -> int:
+        sum_dict = {}
+        for ele in nums:
+            sum_dict[ele] = sum_dict.get(ele, 0) + ele
+
+        dp = [[0 for j in range(max(sum_dict) + 1)] for i in range(max(sum_dict) + 1)]
+
+        for i in range(max(sum_dict) + 1):
+            dp[0][i] = sum_dict[i] if i in sum_dict else 0
+
