@@ -16,7 +16,7 @@ Space complexity: O(n+m) where m is amount and N is the no of elements
 Executed in leetcode: Yes
 Commments: We create a dp array with size equal to amount+, with the first element as 1. Thereafter, we create two for loops to iteratively update the 
 variable with the updated amount by adding the difference between the updated amount and coin denomination. Finally, we return the last 
-value.
+value as the result.
 
 class Solution(object):
     def change(self, amount, coins):
