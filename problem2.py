@@ -5,13 +5,14 @@
 
 class Solution:
     def minFallingPathSum(self, A: List[List[int]]) -> int:
-        for row in range(len(A) - 2, -1, -1):
-            for col in range(len(A[row])):
+        for row in range(1, len(A)):
+            for col in range(len(A)):
                 if col == 0:
-                    A[row][col] += min(A[row+1][col], A[row+1][col+1])
+                    A[row][col] += min(A[row-1][col], A[row-1][col+1])
                 elif col == len(A[row]) - 1:
-                    A[row][col] += min(A[row+1][col], A[row+1][col-1])
+                    A[row][col] += min(A[row-1][col], A[row-1][col-1])
                 else:
-                    A[row][col] += min(A[row+1][col], A[row+1][col-1], A[row+1][col+1])
-        return min(A[0])
+                    A[row][col] += min(A[row-1][col], A[row-1][col-1], A[row-1][col+1])
+                    
+        return min(A[len(A)-1])
         
