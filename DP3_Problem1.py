@@ -22,14 +22,14 @@ class Solution:
         if max_no <= 2: 
             return (sorted(nums)[-1])
         
-        # Create 2 DP array
+        # Create 2 new array
         x = [0]*max_no
         y = [0]*max_no
+        
+        # Loop over the array and fill the values
         for i in range(len(nums)): x[nums[i]-1] += 1   
         y[0] = x[0]; y[1] = max(x[0],2*x[1])
-
-        for i in range(2,max_no):
-            y[i] = max(y[i-1],(i+1)*x[i] + y[i-2])
+        for i in range(2,max_no): y[i] = max(y[i-1],(i+1)*x[i] + y[i-2])
         
         # The last value is the maximum amount accrued
         return y[-1]
