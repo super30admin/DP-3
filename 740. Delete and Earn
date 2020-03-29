@@ -1,0 +1,39 @@
+Time complexity: O(n)+O(max of array)
+Space complexity: O(n)+O(max of array)
+Did this code submitted successfully on leetcode: Yes
+
+class Solution {
+    public int deleteAndEarn(int[] nums) {
+        
+        //Edge case
+        if(nums==null || nums.length==0)
+            return 0;
+        
+        //Find max from the array
+        int max=Integer.MIN_VALUE;
+        
+        for(int i=0;i<nums.length;i++){
+            max=Math.max(max,nums[i]);
+        }
+        
+        //Create dp array
+        int[] dp = new int[max+1];
+        
+        //Putting all the elements at there place
+        for(int n:nums){
+            dp[n]+=n;
+        }
+        
+        //Creating two new variables for each case sum
+        int skip=0;
+        int take=0;
+        
+        for(int n:dp){
+            int temp=skip;
+            skip= Math.max(skip,take);
+            take=temp+n;
+        }
+        
+        return Math.max(skip,take);
+    }
+}
