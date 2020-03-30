@@ -16,14 +16,9 @@ class Solution {
             dp[num]++;
         }
 
-        int max=0;
-        if(dp[1] != 0){
-            max = dp[1];
-        }
 
         for(int i=2; i < 10001; i++){
             dp[i] = Math.max(dp[i-1], dp[i-2] + dp[i] * i);
-            max = Math.max(dp[i],max);
         }
         return dp[10000];
     }
