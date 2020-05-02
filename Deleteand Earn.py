@@ -1,5 +1,5 @@
 #Time Complexity : O(N) numbe rof inouts +Max (of the input) or length of DP array
-#Space Complexity : O(m) where m is maximum value of the input which is used for a
+#Space Complexity : O(m) where m is maximum value of the input which is used for the creating of DP array
 
 class Solution(object):
     def deleteAndEarn(self, nums):
