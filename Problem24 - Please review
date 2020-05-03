@@ -1,0 +1,25 @@
+// Time Complexity :O(NlogN), where N is the length of nums
+// Space Complexity :O(N), the size of our count
+// Did this code successfully run on Leetcode :Yes
+
+//Dynamic programming approch 
+class Solution {
+    func deleteAndEarn(_ nums: [Int]) -> Int {
+        
+        var take = 0, skip = 0
+        var values = [Int](repeating: 0, count: 10001)
+        
+        for num in nums {
+            values[num] += num
+        }
+        
+        
+        for value in values {
+            var temp = max(skip+value, take)
+            skip = take
+            take = temp 
+        }
+        
+        return take
+    }
+}
