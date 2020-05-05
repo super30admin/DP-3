@@ -1,0 +1,25 @@
+// Time Complexity :O(n2)
+// Space Complexity :O(1)
+// Did this code successfully run on Leetcode :Yes
+
+class Solution {
+   func minFallingPathSum(_ A: [[Int]]) -> Int {
+        var dp = A[0]
+        let count = A[0].count
+        //  add the element of every row
+        for i in 1..<A.count{
+            var tempDp = [Int](repeating: Int.max, count: count)
+            //  start with every column num in the thw line
+            for j in 0..<count{
+                //  The next row's choice must be in a column that is different from the previous row's column by at most one.
+                //  find the fit number
+                for k in max(j-1, 0)...min(j+1, count-1){
+                    tempDp[j] = min(tempDp[j], dp[k])
+                }
+                tempDp[j] += A[i][j]
+            }
+            dp = tempDp
+        }
+        return dp.min()!
+    }
+}
