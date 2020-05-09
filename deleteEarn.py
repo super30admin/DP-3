@@ -1,4 +1,4 @@
-# Time Complexity : O(N log N) where N = len(nums)
+# Time Complexity : O(N) where N = len(nums)
 # Space Complexity : O(N) where  n = count
 # Did this code successfully run on Leetcode : yes
 # Any problem you faced while coding this : no
