@@ -1,5 +1,5 @@
-// Time Complexity : O(n) --> where n is length of input array
-// Space Complexity : O(m) --> where m is the maximum element of the input array
+// Time Complexity : O(max(m, n)) --> where n is length of input array and m is the maximum element of the input array
+// Space Complexity : O(m)
 // Did this code successfully run on Leetcode : Yes
 // Any problem you faced while coding this : No
 
