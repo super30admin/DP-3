@@ -59,4 +59,53 @@ public class MinimumFalling_path_sum {
                                                )
                                      );
     }
+
+
+    /*
+      Dp Solution  
+      Time Complexity  : O(N^2)  N is the size of Array but still it will be fast because 
+      we have input size is maximum 100 , so at most 100*100 =10000 operation whch is fast based on
+      current hardware and CPU
+      Space Complexity :O(N^2)
+      is worked on Leetcode : YES
+
+    
+    */
+
+    public int minFallingPathSum_DP(int[][] A) {
+        int n = A.length;
+        int ans = Integer.MAX_VALUE;
+        int[][] dp = new int[A.length][A.length];
+        for(int i=0;i<n;i++){
+
+            dp[0][i] = A[0][i];
+            // if(n ==1){
+            //     ans = Math.min(ans, dp[0][i]);
+            // }
+        }
+        
+        for(int i=1;i<n;i++){
+            for(int j=0;j<n;j++){
+//                 same column check
+                int temp = dp[i-1][j];
+//                 check left column
+                if(j!=0){
+                    temp = Math.min( temp, dp[i-1][j-1]);
+                }
+//                 check right column
+                if(j!= n-1){
+                    temp = Math.min(temp, dp[i-1][j+1]);
+                }
+                dp[i][j] = temp + A[i][j];
+            }
+        }
+//         check the min of last column
+        for(int i=0;i<n;i++){
+            // get min of last row and compare with current min 
+
+            ans = Math.min( ans,dp[n-1][i]);
+        }
+        
+        return ans;   
+    }
 }
