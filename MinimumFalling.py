@@ -10,4 +10,4 @@ class Solution:
                     A[i][j]+=min(A[i-1][j],A[i-1][j+1],A[i-1][j-1])
         return min(A[len(A)-1])
         
-#It's giving wrong answer on Leetcode! Please tell why? Thanks
+#It's giving wrong answer on Leetcode for standard input, my answer is 11, it should be 12! Please tell why? Thanks
