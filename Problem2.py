@@ -17,6 +17,7 @@ class Solution:
             dp = row 
             print("dp",dp)
         return min(dp[1:col+1])
+    
 
 if __name__ == "__main__":
     s = Solution()

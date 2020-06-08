@@ -15,15 +15,20 @@ class Solution:
             arr[num] = arr[num] + num
         print(arr)
         
-        skip =0 
-        take = 0 
-        for i in range(1,len(arr)):
-            temp = skip 
-            skip = max(skip, take)
-            take = temp + arr[i]
-        
-        return max(skip,take)
-        
+        # skip =0 
+        # take = 0 
+        # for i in range(1,len(arr)):
+        #     temp = skip 
+        #     skip = max(skip, take)
+        #     take = temp + arr[i]        
+        # return max(skip,take)
+        small = arr[0] 
+        large = max(arr[0],arr[1])
+        for i in range(2,len(arr)):
+            curr = max(large, small + arr[i])
+            small = large 
+            large = curr 
+        return large 
         
 
 if __name__ == "__main__":
