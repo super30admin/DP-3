@@ -16,7 +16,7 @@
  * 
  */
 // Time Complexity : O(3^W)    --3- difft types of passes/tickets, W-days -365
-// Space Complexity : O(3^W)
+// Space Complexity : O(1)     --since 365 is a constant
 // Did this code successfully run on Leetcode : no - Time Limit Exceeded
 // Any problem you faced while coding this : nope
 
