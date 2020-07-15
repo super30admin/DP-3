@@ -1,0 +1,59 @@
+// Time Complexity :O(2^n) -where n is the size of the nums array
+// Space Complexity : O(n) - where n is the size of the nums array
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this :No
+
+// Your code here along with comments explaining your approach:  Recursive solution of approaching all the possible solutions and then giving the maximum amount earned of all the valid paths.
+class Solution {
+    public int deleteAndEarn(int[] nums) {
+        if(nums==null || nums.length==0) return 0;
+        int max=0;
+        for(int i=0;i<nums.length;i++){
+            max=Math.max(max,nums[i]);
+        }
+        int[] arr=new int[max+1];
+        for(int num : nums){
+            arr[num]=arr[num]+num;
+        }
+        return helper(arr,0,0);   
+    }
+    
+    public int helper(int[] arr,int amount,int index){
+        //base
+        if(index>=arr.length) return amount;
+        //logic
+        //choose
+        int case1=helper(arr,amount+arr[index],index+2);
+        //don't choose
+        int case2=helper(arr,amount,index+1);
+        return Math.max(case1,case2);
+    }
+}
+// Time Complexity : O(max(n)+n) - whichever is a larger term that will give out the value.
+// Space Complexity : O(1)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No
+
+// Your code here along with comments explaining your approach: Dp approach using 2 variables based on the concept of take and not take.
+
+
+class Solution {
+    public int deleteAndEarn(int[] nums) {
+        if(nums==null || nums.length==0) return 0;
+        int max=0;
+        for(int i=0;i<nums.length;i++){
+            max=Math.max(max,nums[i]);
+        }
+        int[] arr=new int[max+1];
+        for(int num : nums){
+            arr[num]=arr[num]+num;
+        }
+        int skip=0;int take=0;
+        for(int i=0;i<arr.length;i++){
+            int temp=skip;
+            skip=Math.max(skip,take);
+            take=temp+arr[i];
+        }
+        return Math.max(skip,take);
+    }
+}
