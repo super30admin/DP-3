@@ -44,7 +44,7 @@ public class Delete_and_Earn {
 
 // Time Complexity : O(n * 2^n), n because of search and delete and 2^n nodes
 // Space Complexity : O(n)
-// Did this code successfully run on Leetcode : Yes
+// Did this code successfully run on Leetcode : no
 // Any problem you faced while coding this : For few cases i'm getting expected output, few cases are failing
 
 
