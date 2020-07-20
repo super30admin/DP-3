@@ -1,4 +1,4 @@
-//TC: O(n), n:number of elements in nums array
+//TC: O(n), n:maximum element in nums array
 //SC: O(n)
 //Approach:
 //1. We reduce the problem to house robber, where we have to see just if either we delete this coin and earn, or we don't.
