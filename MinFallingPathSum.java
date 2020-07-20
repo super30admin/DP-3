@@ -1,3 +1,12 @@
+//TC: O(n*n), n: length of the given array A
+//SC: O(n*n)
+//Approach:
+//1. We can reduce this problem to paint house, where we know that what to take in the current row given the previous row.
+//2. Extra constraints here are, the columns in the subsequent rows can differ by atmost 1. So, we create dp[][] of size length(A)*length(A).
+//3. On the corners, we take the minimum out of the last row same column and last row adjacent column. [(i-1,j), (i-1,j-1)] or [(i-1,j), (i-1,j+1)
+//3. In the middle part of the matrix, we have three options to compare, [(i-1,j), (i-1,j-1), (i-1)(j+1)]
+//4. We keep taking the minimum elements like this and the element at last row last column gives us the minimum falling path sum.
+
 class Solution {
     public int minFallingPathSum(int[][] A) {
         int[][] dp = new int[A.length][A.length];
