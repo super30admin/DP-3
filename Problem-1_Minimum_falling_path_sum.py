@@ -1,5 +1,5 @@
 # APPROACH 1: BRUTE FORCE (RECURSION)
-# Time Complexity : O(2^n) n: number of row / column of A
+# Time Complexity : O(3^n) n: number of row / column of A
 # Space Complexity : O(n) 
 # Did this code successfully run on Leetcode : NO (TIME LIMIT EXCEEDED)
 # Any problem you faced while coding this : Yes (to visualise the tree)
