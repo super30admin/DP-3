@@ -9,8 +9,6 @@
 # Now we will add values to the newly created array based on the input array element count
 # We will create a dp matrix to keep track of previous element based on the decision to choose or not to choose
 # Get max of the last row represents our maximum earn by deleting
-
-
 class Solution:
     def deleteAndEarn(self, nums: List[int]) -> int:
 

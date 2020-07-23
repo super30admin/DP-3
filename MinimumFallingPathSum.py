@@ -3,7 +3,6 @@
 # Did this code successfully run on LeetCode : yes
 # Any problem you faced while coding this : No
 
-
 # we will perform dp on the same matrix and keep track of our selection
 # each time we select an item we will check add the existing value with min value of the previous row,
 # along with the condition based on their position whether they are left edge or right edge or in center
