@@ -1,7 +1,7 @@
 class MinimumFallingPathSum {
     public int minFallingPathSum(int[][] A) {
         // Time Complexity: O(n^2)
-        // Space Complexity:   O(n);
+        // Space Complexity:   O(1);
         
         //Observation: Difference of the indices is atmost 1
         //  atmost implies can be 1, 0 and -1 also 
