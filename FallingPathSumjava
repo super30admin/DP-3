@@ -1,0 +1,46 @@
+// Time Complexity : O(n*m) + O(m) where n is the number of col and m is the number of rows
+// Space Complexity : O(1) since we dont use any extra space
+// Did this code successfully run on Leetcode : yes
+// Any problem you faced while coding this :
+
+
+// Your code here along with comments explaining your approach
+
+// 1 2 3
+// 4 5 6
+// 7 8 9
+//  starting from 2nd row for an element say 5, we can choose 1 2 3 so we update that and add accordingly
+// for edge case such as 4 and 6 we only take 1 2 and 2 3 respectively
+class Solution {
+    public int minFallingPathSum(int[][] A) {
+        
+        // edge case 
+        if (A==null ||A.length==0)
+            return 0;
+        
+        
+        int size = A.length;
+        int min=Integer.MAX_VALUE;
+        
+        
+        for (int i=1; i<size;i++){
+            for(int j=0;j<size;j++){
+            if (j==0)
+                A[i][0] +=  Math.min(A[i-1][0],A[i-1][1]);
+            
+               
+            else if(j==size-1)
+                A[i][size-1] += Math.min(A[i-1][size-2],A[i-1][size-1]); 
+                
+            else
+            A[i][j] += Math.min(Math.min(A[i-1][j-1],A[i-1][j]),A[i-1][j+1]); 
+            }
+                        
+        }
+        
+        // return the minimum of the elements in the last row, since we have taken care of all the possibilites and chosing the minimum one
+        for (int j=0;j<size;j++)
+            min = Math.min(min,A[size-1][j]);
+        return min;
+    }
+}
