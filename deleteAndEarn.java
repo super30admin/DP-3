@@ -40,15 +40,26 @@
                 for(int i=0;i<nums.length;i++){
                     result[nums[i]] += nums[i];
                 }
-                
-                int dp[][] = new int[result.length][2];
-                dp[0][0] = result[0]; 
-                dp[0][1] = 0;
-                
-                for(int i=1;i<result.length;i++){
-                    dp[i][0] = result[i]+dp[i-1][1];
-                    dp[i][1] = Math.max(dp[i-1][0],dp[i-1][1]);
+
+                int C  = 0;
+                int DC = 0;
+
+                for(int num : result){
+                    int temp = DC;
+                    DC = Math.max(C,DC);
+                    C = num + temp;
                 }
-                return Math.max(dp[result.length-1][0],dp[result.length-1][1]);
+                 
+                 return Math.max(C,DC);
+                 
+                // int dp[][] = new int[result.length][2];
+                // dp[0][0] = result[0]; 
+                // dp[0][1] = 0;
+                
+                // for(int i=1;i<result.length;i++){
+                //     dp[i][0] = result[i]+dp[i-1][1];
+                //     dp[i][1] = Math.max(dp[i-1][0],dp[i-1][1]);
+                // }
+                // return Math.max(dp[result.length-1][0],dp[result.length-1][1]);
         }
 }
