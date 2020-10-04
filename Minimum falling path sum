@@ -1,0 +1,40 @@
+// TC: O(n*n)
+//SP: O(n*n)
+//idea:for 1st column and last column we have only two choices but for other columns we have 3 choices(j, j+1, j-1)
+class Solution {
+    public int minFallingPathSum(int[][] A) {
+       
+        if(A == null || A.length == 0) return 0;
+        
+        int rows = A.length;
+        int cols = A[0].length;
+        int[][] dp = new int[rows][cols];
+        
+        //Initialize DP
+        for(int col = 0; col < cols; col++){
+            dp[0][col] = A[0][col];
+        }
+  
+        for(int i = 1; i < rows; i++){
+            for(int j = 0; j < cols; j++){
+                
+          //  if(j == 0){}
+            //else if( j == cols-1){}
+           // else if(j > 0 && j < cols-1){}
+                
+       //filling up dp[i][j] form 2nd row using the previius row possiblities        
+        dp[i][j] = A[i][j] + Math.min(Math.min(dp[i-1][j], dp[i-1][Math.max(0,j-1)]), dp[i-1][Math.min(cols-1, j+1)]);
+    
+         }
+        }
+        
+    // getting minimum value from last row
+    int min = Integer.MAX_VALUE;
+      for(int x : dp[rows-1]){
+          min = Math.min(min, x);
+      }                                                                                     
+    
+    return min; 
+                                                                                           
+    }
+}
