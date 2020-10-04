@@ -1,0 +1,42 @@
+// time complexity: O(N+m) -> N: max value in the array, m : length of array nums
+//space complexity: (2*N)= O(N) : max value in the array
+// problem can be either done through sorting or finding the max value in array
+// can problem be optimised to O(1) space, since we only care about the previous two values?
+class Solution {
+    public int deleteAndEarn(int[] nums) 
+    {
+        // Base cases
+         if(nums == null || nums.length == 0) return 0;
+        
+        int max = Integer.MIN_VALUE;
+        
+        // Find the maximum value of array
+        for(int i =0; i<nums.length; i++){
+            
+            max = Math.max(max, nums[i]);
+        }
+        
+        //Find the count of each element from 0 to max value of array
+        int[] count = new int[max+1];
+        
+        for(int num : nums)
+        {
+             count[num]++;
+        }
+        //we initailise our DP
+        int[][] dp = new int[max+1][2]; // we use max+1 to make make our code look more clean, max -> dp[max][0]
+        dp[0][0] = 0;
+        dp[0][1] = 0;
+        
+        for(int i= 1; i<= max; i++){
+         
+        // if we leave the element, we can go for maximum sum out of taking last element or leaving it.
+            dp[i][0] = Math.max(dp[i-1][0], dp[i-1][1]); // leave the element
+            
+    // if we pick the element, we pick it with its frequency and take the value from DP after leaving prev element
+            dp[i][1] = i*count[i] + dp[i-1][0]; // pick the element
+        }
+        
+        return Math.max(dp[max][0], dp[max][1]); // return the max value from last row
+    }
+}
