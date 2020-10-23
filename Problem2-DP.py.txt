@@ -1,0 +1,17 @@
+# Time Complexity : O(size of matrix)
+# Space Complexity : O(size of matrix)
+# Did this code successfully run on LeetCode : Yes
+# Any problem you faced while coding this : Changing the matrix size helped make the logic simpler
+
+class Solution:
+    def minFallingPathSum(self, A: List[List[int]]) -> int:
+        
+        dp = [[0 for _ in range(len(A[0])+2)] for _ in range((len(A))+1)]
+        
+        for i in range(1, len(dp)):
+            for j in range(1, len(dp[0])-1):
+                dp[i][j] = A[i-1][j-1] + min(dp[i-1][j], dp[i-1][j-1], dp[i-1][j+1])
+            dp[i][0] = dp[i][1]
+            dp[i][-1] = dp[i][-2]
+                
+        return min(dp[-1])

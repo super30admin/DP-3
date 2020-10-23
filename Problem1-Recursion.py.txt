@@ -1,0 +1,26 @@
+# Time Complexity : O(2^n)
+# Space Complexity : O(n)
+# Did this code successfully run on LeetCode : Yes
+# Any problem you faced while coding this : No
+
+class Solution:
+    def deleteAndEarn(self, nums: List[int]) -> int:
+        if nums == []:
+            return 0
+        maxVal = 0
+        for i in range(len(nums)):
+            maxVal = max(maxVal, self.helper(nums, i, [nums[i]-1, nums[i]+1], nums[i]))
+        return maxVal
+    
+    def helper(self, nums, index, notUse, rSum):
+        if index == len(nums)-1:
+            return rSum
+        maxSum = rSum
+        if nums[index+1] not in notUse:
+            curNotUse = notUse[:]
+            curNotUse.append(nums[index]-1)
+            curNotUse.append(nums[index]+1)
+            maxSum = max(maxSum, self.helper(nums, index+1, curNotUse, nums[index+1] + rSum))
+        else:
+            maxSum = max(maxSum, self.helper(nums, index+1, notUse, rSum))
+        return maxSum
