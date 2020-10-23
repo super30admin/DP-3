@@ -1,0 +1,27 @@
+# Time Complexity : O(m*2^n), m is the size of each element (list here) and n is the number of rows in the input 2D array
+# Space Complexity : O(n), recursive stack fills up with maximum n calls
+# Did this code successfully run on LeetCode : Yes
+# Any problem you faced while coding this : No
+
+class Solution:
+    def minFallingPathSum(self, A: List[List[int]]) -> int:
+        if A == []: 
+            return 0
+        
+        minVal = float("inf") 
+        for i in range(len(A[0])):
+            minVal = min(minVal, self.helper(A, 0, i, A[0][i])
+                
+        return minVal
+    
+    def helper(self, A, row, col, runSum):
+        print(row, col, runSum)
+        if row == len(A)-1:
+            return runSum
+        
+        curMin = float("inf")
+        for i in range(len(A[0])):
+            if i - col in [-1, 0, 1]:
+                curMin = min(curMin, self.helper(A, row+1, i, runSum + A[row+1][i]))
+        
+        return curMin
