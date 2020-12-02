@@ -22,3 +22,5 @@ class Solution(object):
         return(min(A[len(A)-1]))
 solved=Solution()
 print(solved.minFallingPathSum([[1,2,3],[4,5,6],[7,8,9]]))
+#O(n^2)...two nested for loops
+#O(1) ...updating same array

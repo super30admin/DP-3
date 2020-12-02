@@ -32,3 +32,11 @@ class Solution(object):
 
 solved=Solution()
 print(solved.deleteAndEarn([2,2,3,3,3,4]))
+
+# O(max(maxno.,n)) where n is array size>>
+# case1>> [2,2,2,2,2]
+# size of array
+# case2>>[1,2,100]
+# max number 100 (dp array)
+
+# O (maxelement) to construct dp array
