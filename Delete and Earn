@@ -1,0 +1,38 @@
+
+// Time Complexity : O(N)
+// Space Complexity : O(N) 
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : Structuring the data in array.
+
+// Your code here along with comments explaining your approach: Similar to HOUSE ROBBER problem after converted to array whose values equals to sum of number * it's frequency.
+
+SOLUTION:
+class Solution {
+    public int deleteAndEarn(int[] nums) {
+        if(nums==null || nums.length==0){
+            return 0;
+        }
+        
+        int maxElement = Integer.MIN_VALUE;
+        
+        for(int i = 0 ; i < nums.length ; i++){
+            maxElement = Math.max(maxElement, nums[i]);
+        }
+        
+        int[] result = new int[maxElement+1];
+        
+        for(int i = 0 ; i < nums.length ; i++){
+                result[nums[i]] += nums[i];
+        }
+        
+        int skip = 0;
+        int take = 0;
+        for(int i = 1 ; i <= result.length ; i++){
+            int temp = Math.max(skip,take);
+            take = skip + result[i-1];
+            skip = temp;
+        }
+
+        return Math.max(skip,take);
+    }
+}
