@@ -13,7 +13,7 @@ eg, [1,1,1,1,1,1,1,1,1,1,1,1,................. 999999 times]
 case3: regardless of the above cases, the helper function traverses through a binary tree.
         O(2 ^ (n/2)) ) in the worst case where n is the length of the array input
 
-Hence time complexity: max( O(max element in input), O(n) , O(2 ^ (n/2)) ) in the worst case where n is the length of the array input
+Hence time complexity: max( O(max element in input), O(n) , O(2 ^ (n/2)) )
 
 Space Complexity:
 O(maximum element in the input)
