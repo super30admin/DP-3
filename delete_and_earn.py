@@ -22,3 +22,5 @@ class Solution:
                 max = x
                 
         return max
+
+# Another approach = Use Ordered dict
