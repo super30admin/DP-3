@@ -48,3 +48,31 @@ class Solution {
         return Math.max(skip,choose);
     }
 }
+
+class Solution {
+    public int deleteAndEarn(int[] nums) {
+        if (nums == null || nums.length == 0)
+            return 0;
+        
+        // array of max size
+        int max = getMax(nums);
+        int[] dp = new int[max+1];
+        for(int i: nums) {
+            dp[i] += i;
+        }
+        
+        int choose = 0, notChoose = 0;
+        for(int i: dp) {
+            int temp = notChoose;
+            notChoose = Math.max(choose, notChoose);
+            choose = i + temp;
+        }
+        return Math.max(choose, notChoose);
+    }
+    private int getMax(int[] nums) {
+        int max = Integer.MIN_VALUE;
+        for(int i: nums)
+            max = Math.max(i, max);
+        return max;
+    }
+}
