@@ -1,5 +1,5 @@
-// Time Complexity :O(n)
-// Space Complexity : O(n)
+// Time Complexity :O(max_element)
+// Space Complexity : O(max_element) modified array 
 // Did this code successfully run on Leetcode : yes
 // Any problem you faced while coding this :
 modifying the array to fit house robber
