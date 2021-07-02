@@ -1,3 +1,7 @@
+//Time complexity: O(N^2), where N is the size of matrix.
+//Space complexity: O(1), since no extra space is used. 
+// Did this code successfully run on Leetcode : https://leetcode.com/submissions/detail/516182374/
+
 class Solution2 {
     public int minFallingPathSum(int[][] matrix) {
         if (matrix == null || matrix.length == 0)
