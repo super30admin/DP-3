@@ -17,11 +17,7 @@ class Solution(object):
                     matrix[i][j]+=min(matrix[i+1][j],matrix[i+1][j-1])
                 else:
                     matrix[i][j]+=min(matrix[i+1][j],matrix[i+1][j+1],matrix[i+1][j-1])         
-        a=sys.maxint
-        for i in matrix[0]:
-            if i<a:
-                a=i
-        return a
+        return min(matrix[0])
                 
 
                 
