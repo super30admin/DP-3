@@ -1,0 +1,27 @@
+class Solution {
+    public int deleteAndEarn(int[] nums) {
+        if(nums==null ||nums.length==0) return 0;
+        
+        int max=Integer.MIN_VALUE;
+        for(int i=0;i<nums.length;i++){
+             max=Math.max(max,nums[i]);
+        }
+        //int array with max 4 length plus 1 to consider 0 and than adding n=sum as values in array
+        int[] arr =  new int[max+1];
+        for(int i : nums){
+            arr[i]+=i;
+        }
+        
+        //traverse the arr which we made to make a DP matrix and return max of the calculation
+        int C=0,DC=0;
+        for(int num :arr){
+            int temp=DC;
+            DC=Math.max(C,DC);
+            C=temp+num;
+        }
+        return Math.max(C,DC);    
+    }
+}
+
+//Time : O(n) //max values in nums
+//space : O(n) //max values in nums
