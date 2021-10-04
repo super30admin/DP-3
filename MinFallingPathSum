@@ -1,0 +1,39 @@
+class Solution {
+    public int minFallingPathSum(int[][] matrix) {
+        //1 matrix is minimum that exists
+        //init
+        int r = matrix.length;
+        int c = matrix[0].length;
+        
+        int[][] dp= new int[r][c];
+         // copy the 1st row to M[0]
+       
+        dp[0]=matrix[0]; 
+        for(int i=1;i < r;i++){
+            for(int j=0;j < c;j++){
+                if(j==0){ //first col
+                    dp[i][j]= Math.min(dp[i-1][j],dp[i-1][j+1])+ matrix[i][j]; //j=0
+                }
+                else if(j== c-1){ ///last col
+                    dp[i][j]= Math.min(dp[i-1][j-1],dp[i-1][j])+matrix[i][j];   //j=c-1
+                }
+                else {
+                    int min = Math.min( dp[i-1][j] , dp[i-1][j-1] );
+                    dp[i][j]= matrix[i][j] + Math.min(min,dp[i-1][j+1]);
+                }
+                //all other cols
+            }
+        }
+        
+        int min = Integer.MAX_VALUE;
+        for(int i : dp[r-1]){
+            min=Math.min(i,min);
+        }
+        return min;
+    }
+}
+
+//time: O(n*m)
+//space :O(n*m)
+//can optimize better on space using the same matrix instead of new one to O(n)
+//ran successfully on leetcode
