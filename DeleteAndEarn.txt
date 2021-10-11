@@ -1,0 +1,41 @@
+class Solution{
+	public int deleteAndEarn(int[] nums){
+	
+		if(nums == null || nums.length == 0)
+			return 0;
+		
+		int[]dp = new int[getMax(nums)+1];
+		
+		for(int x: nums){
+		
+			dp[x]+=x;
+			
+		}
+		
+		// House Robber
+		
+		int C  = 0;
+		int DC = 0;
+		
+		for(int x : dp){
+		
+			int temp = DC;
+			DC = Math.max (C , DC);
+			C = temp + x;
+		}
+		return Math.max(C,DC);
+		
+	}
+	
+	private int getMax(int[] nums){
+		
+		int max = Integer.MIN_VALUE;
+		for(int x : nums)
+			max = Math.max(x,max);
+			
+		return max;
+	}
+}
+
+// TC = O(Max(len of Num, Max(Value in Nums)))
+// SC = O(Max value in Nums)
