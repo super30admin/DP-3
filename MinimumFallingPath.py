@@ -1,6 +1,6 @@
 """
 Time Complexity: O(n^2)
-Space Complexity: O(n)
+Space Complexity: O(n^2)
 """
 
 class Solution:
@@ -8,7 +8,7 @@ class Solution:
         rows = len(matrix)
         cols = len(matrix[0])
 
-        dp_array = [[0 for i in range(cols)] for j in range(rows)]
+        dp_array = [[0 for _ in range(cols)] for _ in range(rows)]
         for j in range(0, cols):
             dp_array[rows - 1][j] = matrix[rows - 1][j]
 
