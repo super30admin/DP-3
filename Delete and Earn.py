@@ -26,13 +26,10 @@ class Solution(object):
         sum_until_prev = 0
         
         for idx in range(1, len(keys)):
+            new_last, new_sum = keys[idx], max(sum_until_last, sum_until_prev) + keys[idx] * hmap[keys[idx]]
             if keys[idx] - 1 == last_key:
-                new_last, new_sum = keys[idx], sum_until_prev + keys[idx] * hmap[keys[idx]]
-                sum_until_prev = max(sum_until_last, sum_until_prev)
-                last_key, sum_until_last = new_last, new_sum
-            else:
-                new_last, new_sum = keys[idx], max(sum_until_last, sum_until_prev) + keys[idx] * hmap[keys[idx]]
-                sum_until_prev = max(sum_until_last, sum_until_prev)
-                last_key, sum_until_last = new_last, new_sum
+                new_last, new_sum = keys[idx], sum_until_prev + keys[idx] * hmap[keys[idx]]    
+            sum_until_prev = max(sum_until_last, sum_until_prev)
+            last_key, sum_until_last = new_last, new_sum
         
         return max(sum_until_last, sum_until_prev)
