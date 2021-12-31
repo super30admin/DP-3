@@ -4,6 +4,8 @@ SC: O(n)
 
 Intuition: store the counts of values in hmap, get all the keys from hmap and sort them. Then at any given 
 number, consider only values until that number
+
+-- look into commits for initial solns (for my reference)
 '''
 class Solution(object):
     def deleteAndEarn(self, nums):
