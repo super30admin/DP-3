@@ -66,7 +66,6 @@ class Solution {
     
             min = Math.min(min, dp[n - 1][i]);            
         }
-        
         return min;
     }
 }
