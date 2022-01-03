@@ -1,5 +1,5 @@
 """
-// Time Complexity : O(n+m), where n = len(nums) and m = range of number in nums
+// Time Complexity : O(nlogN), where n = len(nums) and m = range of number in nums
 // Space Complexity :O(M)
 // Did this code successfully run on Leetcode : yes
 // Any problem you faced while coding this :
