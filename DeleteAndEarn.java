@@ -1,3 +1,9 @@
+/**
+ * Time complexity : O(N) + O(M) where N is size of input array and M is max element in input array
+ * Space complexity : O(M) where M is max element in input array
+ * Did it ran on Leetcode: Yes 
+ */
+
 public class DeleteAndEarn {
 
     public static void main(String[] args) {
