@@ -1,0 +1,40 @@
+// Time Complexity : refer below
+// Space Complexity : refer below
+// Did this code successfully run on Leetcode : yes
+// Any problem you faced while coding this : no
+
+
+// Your code here along with comments explaining your approach
+Solution 1 -  Bottom up - TC - O(n) + O(max(n)) 
+                          SC - O(max(n)) where n = size of nums
+
+class Solution {
+    public int deleteAndEarn(int[] nums) {
+        if(nums == null || nums.length == 0)
+            return 0;
+
+        int max = 0;
+
+        for(int i = 0; i < nums.length; i++)          // TC - O(n)
+        {
+            max = Math.max(max, nums[i]);
+        }
+
+        int[] arr = new int[max + 1];
+
+        for(int i = 0; i < nums.length; i++)         // TC - O(n)
+        {
+            arr[nums[i]] += nums[i];
+        }
+
+        int skip = 0, take = 0;
+        for(int i = 1; i < arr.length; i++)         // TC - O(max(n))
+        {
+            int temp = skip;
+            skip = Math.max(skip, take);
+            take = temp + arr[i];
+        }
+
+        return Math.max(skip, take);
+    }
+}
