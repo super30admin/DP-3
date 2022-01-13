@@ -1,23 +1,28 @@
-// Time Complexity : O(n)
-// Space complexity : O(1)
-class Solution {
-    public int minCost(int[][] costs) {
+# Time Complexity : O(n)  
+# Space complexity : O(n) : for freqValues Hashmap
+
+class Solution:
+    def deleteAndEarn(self, nums: List[int]) -> int:
+        maxLength = 0
         
-        // Initialise min as min cost of the all three colors for the first house.
-        int minval = Math.min(costs[0][0], Math.min(costs[0][1] , costs[0][2]));
+        for i in range(len(nums)):
+            if maxLength < nums[i]:
+                maxLength = nums[i]
+        # print(maxLength)
         
-        for (int i = 1; i < costs.length ; i++){
-            
-            
-            // Consider if the one color is picked for that house, the previous house must have different colors. 
-            // Taken case for that house + not taken case of other colors in the previous row (previous house)
-            costs[i][0] = costs[i][0] + Math.min(costs[i-1][1], costs[i-1][2]);
-            costs[i][1] = costs[i][1] + Math.min(costs[i-1][0], costs[i-1][2]);
-            costs[i][2] = costs[i][2] + Math.min(costs[i-1][0], costs[i-1][1]);
-            
-            minval = Math.min(costs[i][0] , Math.min(costs[i][1] , costs[i][2]));
-            
-        }
-        return minval;
-    }
-}
+        freqValues = [0] * (maxLength+1)
+        # print(freqValues)
+        
+        for i in range(len(nums)):
+            freqValues[nums[i]] = freqValues[nums[i]] + nums[i]
+        
+        print(freqValues)
+        skip = 0
+        take = 0
+        
+        for i in range(maxLength+1):
+            temp = skip
+            skip =  max(skip, take)
+            take = freqValues[i] + temp
+        
+        return max(skip, take)
