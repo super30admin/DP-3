@@ -8,20 +8,20 @@ public class MinimumFallingPathSum931LeetCode {
     //Bottom Up approach
     public int minFallingPathSum(int[][] matrix) {
 
-        int[] prev= matrix[0];
+        int[] prev= matrix[0];                              //assign the first row to previous
 
         for(int i=1; i<matrix.length; i++){
-            int[] current = new int[matrix[0].length];
+            int[] current = new int[matrix[0].length];          //creating current array
             //print(prev);
             for(int j=0; j<matrix[0].length; j++){
 
-                if(j == 0){
+                if(j == 0){                                     //check if the column is on left edge
                     current[j] = matrix[i][j] + Math.min(prev[j], prev[j+1]);
                 }
-                else if(j == matrix[0].length-1){
+                else if(j == matrix[0].length-1){               //check if the column is on right edge
                     current[j] = matrix[i][j] + Math.min(prev[j], prev[j-1]);
                 }
-                else{
+                else{                                           //column is in between both edges
                     current[j] = matrix[i][j] + Math.min(prev[j], Math.min(prev[j-1], prev[j+1]));
                 }
                 //print(current);
@@ -33,10 +33,10 @@ public class MinimumFallingPathSum931LeetCode {
         int minimumSum = Integer.MAX_VALUE;
 
         for(int i=0; i<prev.length; i++){
-            minimumSum = Math.min(minimumSum, prev[i]);
+            minimumSum = Math.min(minimumSum, prev[i]);         //finding the minimum value from prev array
         }
 
-        return minimumSum;
+        return minimumSum;                              //returning the minimum value
 
     }
 
