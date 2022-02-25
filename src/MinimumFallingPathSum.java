@@ -1,7 +1,7 @@
 //                           Top-Down               Bottom-Up
 // Time Complexity:           O(n^2)                 O(n^2)
 // Space Complexity:          O(n^2)                  O(n)
-// where n is number of length of matrix
+// where n is length of matrix
 // Yes, this code ran successfully
 // No, I didn't face any problem in this problem statement
 
