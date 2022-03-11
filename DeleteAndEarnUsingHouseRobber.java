@@ -1,52 +1,37 @@
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 /**
  * Time complexity is O(max num)
  * space complexity is O(max num)
  */
 class Solution {
-    int[] dp;
     public int deleteAndEarn(int[] nums) {
-        Map<Integer, Integer> numFreq = new HashMap<>();
         int max = Integer.MIN_VALUE;
         for(int num : nums) {
-            max = Math.max(num, max);
-            int count = numFreq.getOrDefault(num, 0);
-            numFreq.put(num, count+1);
+             max = Math.max(num, max);
         }
         
         int[] houses = new int[max+1];
-        
-        // Arrays.fill(houses, 0);
-        
-        for(int key : numFreq.keySet()) {
-            houses[key] = key*numFreq.get(key);
+
+        for(int num : nums) {
+            houses[num] = houses[num] + num;
         }
         return rob(houses);
     }
     
     private int rob(int[] nums) {
-        dp = new int[nums.length];
-        Arrays.fill(dp, -1);
-        
-        return rob(nums, 0);
-    }
-    
-    private int rob(int[] nums, int i) {
-        if(i >= nums.length) {
-            return 0;
+        int len = nums.length;
+        if(len == 1) {
+            return nums[0];
         }
-        if(dp[i] != -1) {
-            return dp[i];
+        if(len == 2) {
+            return Math.max(nums[0], nums[1]);
         }
-        // rob i
-        int case1 = nums[i] + rob(nums, i+2);
-        // don't rob i
-        int case2 = rob(nums, i+1);
+        int[] dp = new int[len];
+        dp[0] = nums[0];
+        dp[1] = Math.max(nums[0], nums[1]);
         
-        dp[i] = Math.max(case1, case2);
-        return dp[i];
-        //return Math.max(case1, case2);
+        for(int i = 2; i < len; i++) {
+            dp[i] = Math.max(dp[i-1], dp[i-2] + nums[i]);
+        }
+        return dp[len-1];
     }
 }
