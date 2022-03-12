@@ -12,6 +12,8 @@ public class MinimumFallingPath {
    * Time Compelxity: O(n * n)
    * Space Complexity : O(1) -> no extra space used.
    * 
+   * Were you able to solve this on leetcode? Yes
+   * 
    */
   public int minFallingPathSum(int[][] matrix) {
         
@@ -32,6 +34,47 @@ public class MinimumFallingPath {
     
     for(int i = 0; i < matrix[0].length; i++){
         min = Math.min(min, matrix[0][i]);
+    }
+    
+    return min;
+  }
+
+  /**
+   * 
+   * Appraoch - 2
+   * Without updating the matrix in -place, use an auxillary dp array that keeps track of minimum on each row.
+   * 
+   * Time Compelxity: O(n * n)
+   * Space Complexity : O(n) 
+   */
+
+  public int minFallingPathSum(int[][] matrix) {
+    int[] dp = new int[matrix[0].length];
+    
+    for(int i = 0; i < matrix[0].length; i++){
+        dp[i] = matrix[matrix.length-1][i];
+        
+    }
+
+    int[] tempDP = new int[matrix[0].length];
+    
+    for(int i = matrix.length - 2; i >= 0; i--) {
+        for(int j = 0; j < matrix[0].length; j++){
+            if(j == 0){
+                tempDP[j] = matrix[i][j] + Math.min(dp[j], dp[j+1]);
+            } else if(j == matrix[0].length - 1){
+                tempDP[j] = matrix[i][j] + Math.min(dp[j], dp[j-1]);
+            } else {
+                tempDP[j] = matrix[i][j] + Math.min(dp[j], Math.min(dp[j-1], dp[j+1]));
+            }
+        }
+       
+        dp = Arrays.copyOf(tempDP, tempDP.length);
+    }
+    
+    int min = Integer.MAX_VALUE;
+    for(int i = 0; i < dp.length; i++){
+        min = Math.min(min, dp[i]);
     }
     
     return min;

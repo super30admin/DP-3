@@ -11,6 +11,8 @@ class DeleteAndEarn {
         m -> max in nums
 
     Space Complexity: O(m)
+
+    Were you able to solve this on leetcode? Yes
     */ 
     public int deleteAndEarn(int[] nums) {
       int max = Integer.MIN_VALUE;
