@@ -1,7 +1,6 @@
-// Time Complexity :
-// Space Complexity :
-// Did this code successfully run on Leetcode :
-// Any problem you faced while coding this :
+// Time Complexity : 1- O(n)   2 - O(m*n)
+// Space Complexity : 1 - O(1)  2 - O(m*n)  -m*n - size of matrix
+// Did this code successfully run on Leetcode : 1 - Yes  2 - Yes
 
 
 // Your code here along with comments explaining your approach
