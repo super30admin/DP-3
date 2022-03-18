@@ -1,5 +1,5 @@
-// Time Complexity : O(N)
-// Space Complexity : O(N)
+// Time Complexity : O(N) + O(Maximum element of array)
+// Space Complexity : O(Maximum element of array)
 
 // Did this code successfully run on Leetcode : YES
 // Any problem you faced while coding this : NO
@@ -22,14 +22,16 @@ class Solution {
         int choose = 0, avoid = dp[0];
         
        for(int i = 1; i< dp.length; i++){
-           int curr = avoid; // PREVIOUS Don't Choose case value
-           //Choose - Previous case chosen-value
+           int curr = avoid; // avoid is PREVIOUS case -- Don't Choose case value
+           //Choose is Previous case chosen-value
            avoid = Math.max(choose, avoid);
            choose = dp[i] + curr;
            
        }
         
        return Math.max(choose, avoid);
+
+
         // int[][] ans = new int[dp.length][2];
         // //Using HouseRobber technique on dp[] array
 
