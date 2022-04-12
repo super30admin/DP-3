@@ -12,6 +12,9 @@ namespace DynamicProgramming
          * */
         public int GetMAxDeleteAndEarn(int[] nums)
         {
+            if(nums==null || nums.Length==0) 
+                return 0;
+            
             int max = 0;
             foreach (var num in nums)
             {
