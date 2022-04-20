@@ -10,6 +10,7 @@ class Solution {
         int rows = matrix.length;
         int cols = matrix[0].length;
         
+        // Mutate matrix itself if that's allowed
         int dp[][] = new int[rows][cols];
         
         for (int i = 0; i < cols; ++i) {
