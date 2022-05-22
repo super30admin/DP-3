@@ -1,4 +1,6 @@
-
+#TimeComplexity: O(N) 
+#SpaceComplexity: O(1) storing it in variable earn and notearn rather than maintaining dparray
+#It successfully runs on leetcode
 def deleteAndEarn(nums): 
         d={}
         for i in range(max(nums)):
