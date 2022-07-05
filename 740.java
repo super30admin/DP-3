@@ -1,3 +1,4 @@
+//o(n)
 class Solution {
     public int deleteAndEarn(int[] nums) {
         int n = nums.length;
