@@ -1,0 +1,27 @@
+Time Complexity = O(n) + O(max in the dp array)
+
+Space Complexity = O(max)
+	
+
+class Solution:
+    def deleteAndEarn(self, nums: List[int]) -> int:
+        if nums == None or len(nums) == 0:
+            return 0
+        Max = 0
+        for num in nums:
+            Max = max(Max,num)
+        
+        dp_arr = [0] * (Max+1)
+        
+        for i in range(len(nums)):
+            dp_arr[nums[i]] += nums[i] 
+        
+        #Do house robber on dp_arr
+        skip = 0
+        take = 0
+        for i in range(1, len(dp_arr)):
+            temp = skip
+            skip = max(skip, take)
+            take = temp + dp_arr[i]
+            
+        return max(skip, take)
