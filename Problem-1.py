@@ -7,6 +7,7 @@ Solution:
         Space Complexity: O(max(n))
         Time Complexity: O(n + max(n))
 '''
+
 class Solution:
     def houseRobber(self,nums):
         rob = 0
@@ -19,9 +20,10 @@ class Solution:
         
         return max(rob,do_not_rob)
         
-    def deleteAndEarn(self, nums):
+    def deleteAndEarn(self, nums: List[int]) -> int:
         maximum_value = max(nums)
         dp = [0] * (maximum_value + 1)
         for num in nums:
             dp[num] += num
         return self.houseRobber(dp)
+        
