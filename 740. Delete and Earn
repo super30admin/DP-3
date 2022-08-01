@@ -1,0 +1,25 @@
+// Time Complexity :O(N)
+// Space Complexity :O(1)
+// Did this code successfully run on Leetcode :YES
+// Any problem you faced while coding this :NO
+class Solution {
+    public int deleteAndEarn(int[] nums) {
+     if(nums==null || nums.length==0) return 0;
+        int max=nums[0];
+        for(int i:nums)
+            max=Math.max(max,i);
+        
+        int arr[]=new int[max+1];
+        for(int i:nums)
+            arr[i]=arr[i]+i;
+        
+        int prev=0;
+        int curr=arr[1];
+        for(int i=2;i<arr.length;i++){
+            int temp=curr;
+            curr=Math.max(curr,prev+arr[i]);
+            prev=temp;
+        }
+        return curr;
+    }
+}
