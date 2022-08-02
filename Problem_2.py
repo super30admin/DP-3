@@ -46,6 +46,10 @@ class Solution:
 # approach - 2
 class Solution:
     def minFallingPathSum(self, matrix: List[List[int]]) -> int:
+        """
+        Time Complexity : O(N * N)
+        Space Complexity : O(N * N)
+        """
         if len(matrix) == 0: return 0
         
         n = len(matrix)
