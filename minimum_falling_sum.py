@@ -11,7 +11,7 @@ class Solution:
         mat_dim = len(matrix)
         if mat_dim == 1:
             return matrix[0][0]
-        _min = 1001
+        _min = 10001
         _sol = matrix[mat_dim-1].copy()
         for i in range(mat_dim-2, -1, -1):
             temp = _sol.copy()
