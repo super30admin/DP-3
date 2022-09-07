@@ -1,0 +1,32 @@
+class Solution:
+    def deleteAndEarn(self, nums: List[int]) -> int:
+        c = defaultdict(int)
+        for num in nums:
+            c[num] += 1
+        dp = [0 for _ in range(max(nums) + 1)]
+        for k in c:
+            dp[k] = k*c[k]
+        def s(nums: List[int]) -> int:
+            n = len(nums)
+            if n == 1:
+                return nums[0]
+            elif n ==2:
+                return max(nums[0], nums[1])
+            elif n== 3:
+                return max(nums[0]+nums[2], nums[1])
+            a = nums[0]
+            b = nums[1]
+            c = nums[0] + nums[2]
+            v = max(a, b, c)
+            for i in range(3, n):
+                d = nums[i] + max(a, b)
+                v = max(v, d)
+                a = b
+                b = c
+                c = d
+            return v 
+        return s(dp)
+    
+# Time Complexity: O(n)
+# Space Complexity: O(n)
+# Successfully implemented on Leetcode
