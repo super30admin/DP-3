@@ -1,0 +1,47 @@
+Minimum Falling Path Sum
+#tc:O(n)
+#sc:O(1)
+class Solution:
+    def minFallingPathSum(self, matrix: List[List[int]]) -> int:
+        def dfs(arr,i,j,dp):
+
+
+            if j<0 or j>=len(arr[0]):
+                return 1e9
+            if i==0:
+                return arr[0][j]
+            if dp[i][j] != -1:
+                return dp[i][j]
+            up=dfs(arr,i-1,j,dp)+arr[i][j]
+
+            left=dfs(arr,i-1,j-1,dp)+arr[i][j]
+
+            right=dfs(arr,i-1,j+1,dp)+arr[i][j]
+
+            dp[i][j]=min(up,left,right)
+            return dp[i][j]
+
+
+        dp=[[-1]*len(matrix[0]) for i in range(len(matrix))]
+        mini=999999
+        for i in range(len(matrix[0])):
+            mini=min(mini,dfs(matrix,len(matrix)-1,i,dp))
+        return mini
+Delete and Earn
+#tc:O(n)
+#sc:O(1)
+class Solution:
+    def deleteAndEarn(self, nums: List[int]) -> int:
+        if  not nums:
+            return 0
+
+        freq = [0] * (max(nums)+1)
+        for n in nums:
+            freq[n] += n
+
+        dp = [0] * len(freq)
+        dp[1] = freq[1]
+        for i in range(2, len(freq)):
+            dp[i] = max(freq[i] + dp[i-2], dp[i-1])
+
+        return dp[len(freq)-1]
