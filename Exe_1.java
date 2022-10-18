@@ -17,5 +17,5 @@ class Solution {
         return m;
     }
     }
-//tc=O(2^n);
+//tc=O(n);
 //sc=O(n)
