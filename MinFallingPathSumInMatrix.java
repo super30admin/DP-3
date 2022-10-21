@@ -1,6 +1,8 @@
 //TC O(n*n)- row*col
 //SC O(1)
 //we will reuse the same matrix to calulate the dp matrix values
+
+//works in leetcode
 class MinFallingPathSumInMatrix {
     //minimum falling path from 0th row to to reach i,j
     public static int minFallingPathSum(int[][] matrix) {
