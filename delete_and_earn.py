@@ -1,6 +1,10 @@
 class Solution:
     def deleteAndEarn(self, nums: List[int]) -> int:
         
+        ## m = max value in nums list
+        ## TC = O(n) + O(m)
+        ## SC = 1
+        
         tmp = [0]*(max(nums) + 1)
         
         for i in range(len(nums)):
