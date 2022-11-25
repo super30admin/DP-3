@@ -1,7 +1,7 @@
 """
     Problem Statement: Minimium Falling Path Sum
 
-    Time complexity: O(1)
+    Time complexity: O(n^2)
 
     Space complexity: O(1)
 
