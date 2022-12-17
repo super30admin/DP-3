@@ -1,5 +1,8 @@
-// Time Complexity :O(n)
-// Space Complexity :O(1)
+// Time Complexity :O(n) + O(max) 
+/*Both terms can be majority in either case - for ex 1000 1's in this case O(n) is more than O(max) but if there 
+are 4 elements only and in that there are 4 elements only but 4th element is 100 then O(max) is more
+ */
+// Space Complexity :O(n)
 // Did this code successfully run on Leetcode : Yes
 // Any problem you faced while coding this : No
 
