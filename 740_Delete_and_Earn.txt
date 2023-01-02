@@ -1,0 +1,35 @@
+// Time Complexity : o( n) + o(k) k is the max element in the array
+// Space Complexity : o(k)
+// Did this code successfully run on Leetcode : yes
+// Any problem you faced while coding this : no
+
+
+// Your code here along with comments explaining your approach
+/*
+*  At any position, can delete or not delete the element
+*  Create a 1-D dp array. and precompute it to hold value * frequency
+*  dp[i] =   Maximum of
+*       1. value from prev dp element dp[i-1]
+*       2. Value from current dp element dp[i] + two steps back dp[i-2]
+* */
+
+class Solution {
+    public int deleteAndEarn(int[] nums) {
+        int max = nums[0];
+        for(int num : nums){
+            max = Math.max(max, num);
+        }
+
+        int dp[] = new int[max+1];
+
+        for(int num: nums){
+            dp[num] +=num;
+        }
+
+        for(int i = 2; i < dp.length; i++){
+            dp[i] = Math.max(dp[i] + dp[i-2] , dp[i-1]);
+        }
+
+        return dp[max];
+    }
+}

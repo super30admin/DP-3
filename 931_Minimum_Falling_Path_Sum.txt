@@ -1,0 +1,46 @@
+// Time Complexity : o( nm)
+// Space Complexity : o(nm)
+// Did this code successfully run on Leetcode : yes
+// Any problem you faced while coding this : no
+
+
+// Your code here along with comments explaining your approach
+/*
+*  At any position, the path can be from 3 elements above
+*  Create a 2-D dp array.
+*  dp[i][j] =  Curr matrix element + Minimum of
+*       1. value from prev row same cal
+*       2. Value from prev row prev col
+*       3. Value from prev row next col
+* handle separately for first col , last col and first row
+* */
+
+class Solution {
+    public int minFallingPathSum(int[][] matrix) {
+
+        int n = matrix.length ;
+        int m = matrix[0].length;
+
+        int dp[][] = new int[n][m];
+
+
+        int min = Integer.MAX_VALUE;
+        for(int i = 0; i < n ; i++){
+             min = Integer.MAX_VALUE;
+            for(int j =0; j< m; j++){
+
+                dp[i][j] =  matrix[i][j];
+                if(i>0 && j==0){
+                    dp[i][j] +=Math.min(dp[i-1][j], dp[i-1][j+1]);
+                } else if(i>0 && j==m-1){
+                    dp[i][j] +=Math.min(dp[i-1][j], dp[i-1][j-1]);
+                } else if(i>0){
+                    dp[i][j] +=Math.min(Math.min(dp[i-1][j], dp[i-1][j-1]), dp[i-1][j+1]);
+                }
+                min = Math.min(min, dp[i][j]);
+
+            }
+        }
+        return min;
+    }
+}
