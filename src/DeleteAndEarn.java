@@ -23,21 +23,43 @@ public class DeleteAndEarn {
 class FindEarn
 {
     public int deleteAndEarn(int[] nums) {
+        int max = nums[0];
 
-        int max = Integer.MIN_VALUE;
-
-        for(int i : nums)
-            max = Math.max(max,i);
+        for(int num : nums) {
+            max = Math.max(max, num);
+        }
 
         int[] dp = new int[max+1];
 
-        for(int i=0; i<nums.length; i++)
-            dp[nums[i]] += nums[i];
+        for(int num : nums) {
+            dp[num] += num;
+        }
 
-        for(int i=0; i<dp.length; i++)
-            dp[i] = Math.max((dp[i] + (i>=2 ? dp[i-2] : 0)), (i>=1 ? dp[i-1] : 0));
+        if(dp.length == 1) return dp[0];
+        int curr = dp[0];
+        int prev = Math.max(dp[0], dp[1]);
+        for(int i=2; i<dp.length; i++) {
+            curr = Math.max(curr + dp[i], prev);
+            int temp = curr;
+            curr = prev;
+            prev = temp;
+        }
+        return prev;
+// //         Another method with same compexity
+//         int max = Integer.MIN_VALUE;
 
-        return dp[max];
+//         for(int i : nums)
+//             max = Math.max(max,i);
+
+//         int[] dp = new int[max+1];
+
+//         for(int i=0; i<nums.length; i++)
+//             dp[nums[i]] += nums[i];
+
+//         for(int i=0; i<dp.length; i++)
+//             dp[i] = Math.max((dp[i] + (i>=2 ? dp[i-2] : 0)), (i>=1 ? dp[i-1] : 0));
+
+//         return dp[max];
     }
 }
 
