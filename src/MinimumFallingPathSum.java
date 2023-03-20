@@ -54,6 +54,7 @@ public class MinimumFallingPathSum {
 //         {
 //             minVal = Integer.min(minVal,matrix[0][i] + minFallingPathSum(matrix, 1, i, dp));
 //         }
+//         return minVal;
 
 // ******************** Another Method ********************
 //        int[] ans = new int[n];
@@ -65,7 +66,7 @@ public class MinimumFallingPathSum {
 //        for(int i:ans)
 //            minVal = Math.min(minVal, i);
 
-        return minVal;
+//        return minVal;
 
 // ******************** Bottom-Up Approach ********************
 //        int n = matrix.length;
