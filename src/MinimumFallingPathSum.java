@@ -1,6 +1,6 @@
 //                           Top-Down               Bottom-Up
 // Time Complexity:           O(n^2)                 O(n^2)
-// Space Complexity:          O(n^2)                  O(n)
+// Space Complexity:          O(n^2)                  O(1)
 // where n is length of matrix
 // Yes, this code ran successfully
 // No, I didn't face any problem in this problem statement
@@ -18,20 +18,42 @@ public class MinimumFallingPathSum {
     public int minFallingPathSum(int[][] matrix) {
 
         int n = matrix.length;
-
-        int[][] dp = new int[n][n];
-        for(int i=0; i<n; i++)
-        {
-            int[] temp = new int[n];
-            Arrays.fill(temp,-1);
-            dp[i] = temp;
+        
+        for(int i=n-2; i>=0; i--) {
+            for(int j=0; j<n; j++) {
+                if(j == 0) {
+                    matrix[i][j] += Math.min(matrix[i+1][j], matrix[i+1][j+1]);
+                }
+                else if(j == n-1) {
+                    matrix[i][j] += Math.min(matrix[i+1][j-1], matrix[i+1][j]);
+                }
+                else {
+                    matrix[i][j] += Math.min(matrix[i+1][j-1], Math.min(matrix[i+1][j], matrix[i+1][j+1]));
+                }
+            }
         }
-
+        
         int minVal = Integer.MAX_VALUE;
-        for(int i=0; i<n; i++)
-        {
-            minVal = Integer.min(minVal,matrix[0][i] + minFallingPathSum(matrix, 1, i, dp));
+        for(int j=0; j<matrix[0].length; j++) {
+            minVal = Math.min(minVal, matrix[0][j]);
         }
+                           
+        return minVal;
+        
+// //         Bottom up approach with O(n) Space Complexity
+//         int[][] dp = new int[n][n];
+//         for(int i=0; i<n; i++)
+//         {
+//             int[] temp = new int[n];
+//             Arrays.fill(temp,-1);
+//             dp[i] = temp;
+//         }
+
+//         int minVal = Integer.MAX_VALUE;
+//         for(int i=0; i<n; i++)
+//         {
+//             minVal = Integer.min(minVal,matrix[0][i] + minFallingPathSum(matrix, 1, i, dp));
+//         }
 
 // ******************** Another Method ********************
 //        int[] ans = new int[n];
