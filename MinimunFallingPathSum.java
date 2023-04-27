@@ -1,4 +1,4 @@
-//tc=O(n2)
+//tc=O(n^2)
 //sc=O(1)
 class Solution {
     public int minFallingPathSum(int[][] matrix) {
