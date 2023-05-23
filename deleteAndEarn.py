@@ -1,5 +1,5 @@
 class Solution:
-    def deleteAndEarn(self, nums: List[int]) -> int:
+    def deleteAndEarn(self, nums: list[int]) -> int:
         if nums == None and len(nums) == 0:
             return -1
         
