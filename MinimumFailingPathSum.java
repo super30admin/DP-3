@@ -58,4 +58,45 @@ public class MinimumFailingPathSum {
         return minFallingSum;
     }
 
+    // DP bottom up solution , space optimized
+    // Did this code successfully run on Leetcode : yes
+    public int minFallingPathSumSpaceOptimized(int[][] matrix) {
+        int dp[] = new int[matrix[0].length];
+
+        for(int index = 0; index < matrix[0].length; index++) {
+            dp[index] = matrix[matrix.length - 1][index];
+        }
+
+        int tempCurrMin = 0;
+        int tempLeftMIn = 0;
+        int tempLeftDoubleMin = 0;
+        for(int row = matrix.length - 2; row >= 0; row --) {
+            for(int col = 0; col <= matrix[0].length - 1; col++) {
+                tempLeftDoubleMin = tempLeftMIn;
+                tempLeftMIn = tempCurrMin;
+
+                int leftPath = col - 1 < 0 ? Integer.MAX_VALUE: dp[col - 1];
+                int centrePath = dp[col];
+                int rightPath = col + 1 == matrix[0].length ? Integer.MAX_VALUE : dp[col + 1];
+
+                tempCurrMin = matrix[row][col] + Math.min(leftPath, Math.min(centrePath, rightPath));
+
+                if(col - 2 >= 0){
+                    dp[col - 2] = tempLeftDoubleMin;
+
+                }
+            }
+            dp[dp.length - 1] = tempCurrMin;
+            dp[dp.length - 2] = tempLeftMIn;
+        }
+
+        int pathMin = Integer.MAX_VALUE;
+
+        for(int col = 0; col < matrix[0].length; col++) {
+            pathMin = Math.min(pathMin, dp[col]);
+        }
+
+        return pathMin;
+    }
+
 }
