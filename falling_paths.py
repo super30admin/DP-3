@@ -1,3 +1,11 @@
+# Time Complexity : O(M*N)
+# Space Complexity : O(M*N)
+# Did this code successfully run on Leetcode : Yes
+# Any problem you faced while coding this :
+
+# Your code here along with comments explaining your approach
+    # This is boiling down to house painting pattern
+
 class Solution:
     def minFallingPathSum(self, costs: List[List[int]]) -> int:
         dp_matrix=[[None for i in range(len(costs[0]))] for i in range(len(costs))]

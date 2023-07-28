@@ -1,3 +1,12 @@
+# Time Complexity : O(N)
+# Space Complexity : O(N)
+# Did this code successfully run on Leetcode : Yes
+
+# Any problem you faced while coding this :
+
+# Your code here along with comments explaining your approach
+# preprocessing the data into the format of house robber problem, can be done via hashmap hashset
+
 class Solution:
     def deleteAndEarn(self, nums: List[int]) -> int:
         hashset=[0 for i in range(max(nums)+1)]
