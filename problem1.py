@@ -1,4 +1,4 @@
-#Time Complexity : O(n) ... where n is the number of houses
+#Time Complexity : O(n)
 #Space Complexity : O(max_val)
 #Any problem you faced while coding this : -
 

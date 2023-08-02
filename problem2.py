@@ -1,4 +1,4 @@
-#Time Complexity : O(n^2) ... where n is the number of houses
+#Time Complexity : O(n^2)
 #Space Complexity : O(1)
 #Any problem you faced while coding this : -
 
