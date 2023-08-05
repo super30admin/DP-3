@@ -90,3 +90,43 @@
     //     }
     //     return cur;
     // }
+
+// Time Complexity :O(n^2)
+// Space Complexity : O(n)
+// Did this code successfully run on Leetcode : yes
+// Any problem you faced while coding this : No problem
+
+
+// Your code here along with comments explaining your approach
+//Approach-> take bottom up approach on minimum falling path sum-> check for below and diagonal element minimum and change current element value accordingly
+// finally take min of top row as it showcases all possibilities of falling path sum.    
+
+class Solution {
+    public int minFallingPathSum(int[][] matrix) {
+        if(matrix==null || matrix.length==0) return 0;
+        int n=matrix.length;
+        int[] dp= new int[n+1];
+
+        for(int i=n-1;i>=0;i--){
+            int currentRow[]=new int[n+1]; //to handle changing elements as we cant have multiple integers, take an array instead
+            for(int col=0;col<n;col++){
+                if (col == 0) {
+                    currentRow[col] =
+                        Math.min(dp[col], dp[col + 1]) + matrix[i][col];
+                } else if (col == matrix.length - 1) {
+                    currentRow[col] =
+                        Math.min(dp[col], dp[col - 1]) + matrix[i][col];
+                } else {
+                    currentRow[col] = Math.min(dp[col],
+                        Math.min(dp[col + 1], dp[col - 1])) + matrix[i][col];
+                }
+            }
+            dp=currentRow;
+        }
+        int minEle=Integer.MAX_VALUE;
+        for(int i=0;i<n;i++){
+            minEle=Math.min(minEle,dp[i]);
+        }
+        return minEle;
+    }
+}
