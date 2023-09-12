@@ -1,4 +1,4 @@
-# Time Complexity: O(max)+O(n)
+# Time Complexity: O(max(n))+O(n)
 # Space Complexity: O(n)
 
 class Solution(object):
