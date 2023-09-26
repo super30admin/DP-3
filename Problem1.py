@@ -4,6 +4,9 @@
 3. 2 conditions:
 a. If we skip a number, it is equivalent to taking the maximum obtained by either skipping/taking the previous number. 
 b. If we decide to take it, we are definitely skipping the previous one. So we add the current number to the maximum obtained by skipping the previous number.
+
+TC: O(n)
+SC: O(n) -> dp array
 '''
 
 class Solution:

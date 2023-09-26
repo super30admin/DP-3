@@ -2,6 +2,9 @@
 1. We need to find the minimum path from the beginning to the end. But it is also same path from the end to beginning.
 2. We start from the last but one row and check whichever path below it is the minimum path considering both the first and last columns
 3. We proceed further up by summing this minimum value for each row. When we reach the top we have the minimum sum at one of the cells in the top row. Return it.
+
+TC: O(m*n)
+SC: O(1)
 '''
 class Solution:
     def minFallingPathSum(self, matrix: List[List[int]]) -> int:
