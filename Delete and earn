@@ -1,0 +1,12 @@
+#time complexity: O(n)
+#space complexity: O(1)
+#did it run on leetcode: yes
+class Solution:
+    def deleteAndEarn(self, nums: List[int]) -> int:
+        list1=[0]*10001
+        for i in nums:
+            list1[i]+=i
+        prev,curr=0,0
+        for n in list1:
+            prev,curr,=curr,max(prev+n,curr)
+        return curr
