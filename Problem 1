@@ -1,0 +1,26 @@
+#Delete and Earn
+
+class Solution(object):
+    def deleteAndEarn(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        if not nums:
+            return 0
+        
+        max_num = max(nums)
+        points = [0] * (max_num + 1)
+        
+        # Calculate the sum of points for each unique number in nums
+        for num in nums:
+            points[num] += num
+        
+        # Initialize two variables to store the maximum points for previous and current numbers
+        prev, curr = 0, 0
+        
+        # Iterate through the points array and calculate the maximum points
+        for point in points:
+            prev, curr = curr, max(curr, prev + point)
+        
+        return curr
