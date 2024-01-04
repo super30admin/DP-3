@@ -1,5 +1,5 @@
 /*
- ? Problem: House Robber
+ ? Problem: Delete and Earn
  * Time Complexity : O(N + M)  --> N = input array length
  * Space Complexity : O(M)  --> M = max number in the input array
  * Did this code successfully run on Leetcode : Yes
