@@ -1,0 +1,21 @@
+#Minimum Falling Path Sum
+
+class Solution(object):
+    def minFallingPathSum(self, matrix):
+        """
+        :type matrix: List[List[int]]
+        :rtype: int
+        """
+        if not matrix:
+            return 0
+
+        rows, cols = len(matrix), len(matrix[0])
+
+        # Iterate from the second row to the last row
+        for row in range(1, rows):
+            for col in range(cols):
+                # Calculate the minimum falling path sum for each element in the matrix
+                matrix[row][col] += min(matrix[row - 1][max(0, col - 1):col + 2])
+
+        # The minimum falling path sum is the minimum value in the last row
+        return min(matrix[-1])
