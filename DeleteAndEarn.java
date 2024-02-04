@@ -122,4 +122,4 @@ class DeleteAndEarn {
 
         return current;
     }
---
+}
