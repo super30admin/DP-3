@@ -1,4 +1,7 @@
 class Solution {
+    // TC -> For loop for max + For Loop for HashMap + For Loop for DP
+    //      = 2 * O(N) + O(max(nums)) = MAX (N, max(nums)) where N is the length of nums
+    // SC -> O(max(nums))
     public int deleteAndEarn(int[] nums) {
         if(nums == null || nums.length == 0) return 0;
 
