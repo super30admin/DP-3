@@ -1,0 +1,41 @@
+class Solution {
+    public int minFallingPathSum(int[][] matrix) {
+        // S1 : Possibility of greedy ? yes greedy doesnt work 
+
+        // Proceede with 
+        // S2 : Exhaustive Approach 
+            // cue 1 : check for Problem and Sub-Problem existance  - YES for recursive approach
+                //- for index[0][1] falling path - calculate the index[1][0]/ [1][1] /[1][2] falling path
+            // cue 2 : check if repeating sub-problems exist          - YES for DP with Tabulation / Recursion
+                //- for index[0][1] or index[0][2]  falling path - calculate the index[1][1]falling path 
+            // cue 3 : check for hte required parameters for every subproblem & base case
+                // base case i < matrix.length && 
+                //tabulation wiht only 1D matrix because fo the PAINT HOUSE PATTERN 
+        int n=matrix.length;
+        int m= matrix[0].length;
+        int[][] fallingPath = new int[n][m];
+
+        // copy the last row for the tabulation 
+        for(int i=0; i<m ;i++){
+            fallingPath[n-1][i] = matrix[n-1][i];
+        }
+
+        for(int i=n-2; i >= 0 ;i--){
+            for( int j=0; j<m; j++){
+                int current = matrix[i][j] ;
+                // left 
+                int left = (j>0) ? fallingPath[i+1][j-1] : fallingPath[i+1][j];
+                // right 
+                int right = (j < m-1) ? fallingPath[i+1][j+1] : fallingPath[i+1][j];
+                // fallingMin
+                fallingPath[i][j] = Math.min( current + fallingPath[i+1][j] , Math.min(current+left , current+right) ); 
+            }
+        }
+        // loop the top row and return the minimum
+        int min = fallingPath[0][0];
+        for(int i=1; i<m ; i++ ){
+            min = Math.min(min, fallingPath[0][i]);
+        }
+        return min;
+    }
+}

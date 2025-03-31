@@ -1,0 +1,28 @@
+class Solution {
+    public int deleteAndEarn(int[] nums) {
+        // S1 - Greedy deosn't work because of these scenarios 
+        // Fail Case 1 : [1,1,1,1,2,2] - if we picked frequency 
+        // Fail case 2 : [2 , 2, 1, 3, 100,101] - if we picked macimum element first 
+        
+        int n = nums.length;
+        // Preprocessing step - prepare the array with sum of all the occurneces of an element against it index in the array 
+        int earnSize = Integer.MIN_VALUE;
+        for(int i=0 ; i < n ; i++){
+            earnSize = Math.max(earnSize, nums[i]);
+        }
+        int[] dp = new int[earnSize + 1];
+        for(int i: nums){
+            dp[i] = dp[i] + i;
+        }
+        // S2 - Being exhaustive 
+            // check 1 : Idenityfy if there is a Problem ~ Sub-Problem relationship -- top-down /bottom-up
+            // check 2 : Identify if there are REPEATING SUB-PROBLEMS -- DP
+            // check 3 : look for pratmeters and the edge cases if necessary 
+
+        // S3 - implemented using 
+        for(int i=2; i< dp.length; i++){
+            dp[i] = Math.max(dp[i-1] ,  dp[i]+dp[i-2]);    
+        }
+        return dp[dp.length-1];
+    }
+}
