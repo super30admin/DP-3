@@ -1,0 +1,28 @@
+class Solution {
+    public int deleteAndEarn(int[] nums) {
+        if(nums == null || nums.length == 0){
+            return 0;
+        }
+        //finding maximum value in the nums array
+        int max = Integer.MIN_VALUE;
+        for(int i=0;i<nums.length;i++){
+            if(max < nums[i]){
+                max = nums[i];
+            }        
+        }
+        //creating arr of max+1 and for every element, adding it to arr[element](storing all sum of that number in nums)
+        int[] arr = new int[max+1];
+        for(int i=0;i< nums.length; i++){
+            arr[nums[i]] = arr[nums[i]] + nums[i];
+        }
+        int skip = 0, pick = 0;
+        //as we cannot pick adjacent numbers, we are tracking max of sum when skipped and without skipping it at every element
+        for(int i=0;i< arr.length; i++){
+            int temp = skip;
+            skip = Math.max(skip, pick);
+            pick = arr[i] + temp;
+        }
+        //max of skipping last element and picking it
+        return Math.max(skip, pick);
+    }
+}

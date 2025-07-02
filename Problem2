@@ -1,0 +1,30 @@
+class Solution {
+    public int minFallingPathSum(int[][] matrix) {
+        if(matrix == null || matrix.length == 0){
+            return 0;
+        }
+        //traversing from last but one row in the matrix, tracking min cost of each column in the row
+        for(int i = matrix.length - 2; i>=0; i--){
+            for(int j=0; j< matrix[0].length; j++){
+                //if its 0 column, we only have option to pick min from o and 1(j+1)  of below row and adding it to last column of current row
+                if(j == 0){
+                    matrix[i][j] = matrix[i][j] + Math.min(matrix[i+1][j], matrix[i+1][j+1]);
+                }
+                //if its last column, pick min from last column and (j-1) of below row and adding it to last column of current row
+                else if(j == matrix[0].length - 1){
+                    matrix[i][j] = matrix[i][j] + Math.min(matrix[i+1][j], matrix[i+1][j-1]);
+                }
+                //else, pick min from j, j+1 and (j-1) of below row and adding it to j column of current row
+                else{
+                    matrix[i][j] = matrix[i][j] + Math.min(matrix[i+1][j], Math.min(matrix[i+1][j+1], matrix[i+1][j-1]));
+                }
+            }
+        }
+        int min = Integer.MAX_VALUE;
+        for(int i=0; i< matrix[0].length; i++){
+            min = Math.min(min, matrix[0][i]);
+        }
+        //return minimum value from 0 row
+        return min;
+    }
+}
