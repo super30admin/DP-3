@@ -1,0 +1,29 @@
+class Solution(object):
+    def deleteAndEarn(self, nums):
+        if not nums:
+            return 0
+
+        # Build value -> total points (v * count)
+        m = {}
+        minv = float('inf')
+        maxv = 0
+        for v in nums:
+            m[v] = m.get(v, 0) + v
+            if v > maxv: maxv = v
+            if v < minv: minv = v
+
+        # Initialize DP
+        prev = m.get(minv, 0)
+        curr = prev
+        if (minv + 1) in m:
+            curr = max(prev, m[minv + 1])
+
+        # Iterate from min+2 to max
+        i = minv + 2
+        while i <= maxv:
+            temp = curr
+            curr = max(curr, m.get(i, 0) + prev)  # if not present, adds 0
+            prev = temp
+            i += 1
+
+        return curr
